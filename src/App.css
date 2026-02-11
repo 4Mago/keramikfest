@@ -1,4 +1,10 @@
 /* Layout: header, nav + main + right column, footer */
+:root {
+  --left-fixed-top: 10px;
+  --left-header-height: 140px;
+  --left-fixed-gap: 10px;
+  --fixed-columns-top: calc(var(--left-fixed-top) + var(--left-header-height) + var(--left-fixed-gap));
+}
 .site-header {
   padding: 10px 0;
 }
@@ -20,7 +26,7 @@
   text-decoration: none;
   color: inherit;
   position: fixed;
-  top: 10px;
+  top: var(--left-fixed-top, 10px);
   left: 10px;
   z-index: 1000;
   background: #fff;
@@ -101,16 +107,16 @@
   --nav-xpad: 0px;
   --nav-bleed-left: 0px;
   position: fixed;
-  top: calc(var(--fixed-columns-top, 140px) + 10px);
+  top: var(--fixed-columns-top, 160px);
   left: 10px;
   width: 180px;
   padding: 8px var(--nav-xpad);
   border-right: 1px solid #e8e8e8;
-  height: calc(100vh - var(--fixed-columns-top, 140px) - 20px);
+  height: calc(100vh - var(--fixed-columns-top, 160px) - 10px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* center menu vertically */
+  justify-content: flex-start;
 }
 .nav-sidebar ul {
   list-style: none;
@@ -136,18 +142,6 @@
   color: #000;
   text-decoration: none;
 }
-.nav-bottom-img {
-  display: block;
-  /* keep aspect ratio + allow bleed (override mobile global img max-width) */
-  height: auto;
-  max-width: none;
-  width: calc(100% + var(--nav-xpad) + var(--nav-xpad) + var(--nav-bleed-left));
-  margin-left: calc((var(--nav-xpad) + var(--nav-bleed-left)) * -1);
-  margin-top: 16px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
 .main-content {
   min-width: 0;
   /* Keep content visible between fixed columns */
@@ -160,11 +154,11 @@
 
 .right-column {
   position: fixed;
-  top: var(--fixed-columns-top, 140px);
+  top: var(--fixed-columns-top, 160px);
   right: 10px;
   width: 120px;
-  height: calc(100vh - var(--fixed-columns-top, 140px) - 10px);
-  overflow: auto;
+  height: calc(100vh - var(--fixed-columns-top, 160px) - 10px);
+  overflow: hidden;
 }
 .right-column img {
   width: 100%;

@@ -45,6 +45,31 @@ export default function Layout() {
     setIsNavOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const el = document.querySelector('.header-left');
+    if (!el) return;
+
+    const setVars = () => {
+      const rect = el.getBoundingClientRect();
+      const h = Math.max(0, Math.ceil(rect.height));
+      document.documentElement.style.setProperty('--left-header-height', `${h}px`);
+    };
+
+    setVars();
+
+    let ro;
+    if (typeof ResizeObserver !== 'undefined') {
+      ro = new ResizeObserver(() => setVars());
+      ro.observe(el);
+    }
+
+    window.addEventListener('resize', setVars);
+    return () => {
+      window.removeEventListener('resize', setVars);
+      ro?.disconnect();
+    };
+  }, []);
+
   return (
     <>
       <header className="site-header">
@@ -97,7 +122,6 @@ export default function Layout() {
               </li>
             ))}
           </ul>
-          <img src="/media/home/ljdrejar.jpg" alt="" className="nav-bottom-img" />
         </nav>
 
         <main className="main-content">

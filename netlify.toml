@@ -3,6 +3,21 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/media/*"
+  to = "/media/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/media/**/*.swf"
+  [headers.values]
+    Content-Type = "application/x-shockwave-flash"
