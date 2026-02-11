@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <>
       <div className="swf-container">
+        <div className="swf-scroll-shield" aria-hidden="true" />
         <object type="application/x-shockwave-flash" data="/media/home/movie.swf" width="550" height="400">
           <param name="movie" value="/media/home/movie.swf" />
           <embed src="/media/home/movie.swf" width="550" height="400" />

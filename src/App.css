@@ -289,6 +289,17 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    height: min(45vh, 260px);
+    touch-action: pan-y;
+    position: relative;
+  }
+  .swf-scroll-shield {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    pointer-events: auto;
+    touch-action: pan-y;
+    z-index: 5;
   }
   .swf-container ruffle-player,
   .swf-container canvas,
@@ -296,6 +307,8 @@
   .swf-container embed {
     flex: 0 0 auto;
     max-width: none;
+    pointer-events: none; /* allow page scrolling over the movie on mobile */
+    height: 100%;
   }
 
   .fortaring-section {
