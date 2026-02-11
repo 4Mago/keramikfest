@@ -281,6 +281,35 @@
     width: 100px;
     height: 100px;
   }
+
+  /* Mobile: center + crop (no sideways bleed) */
+  .swf-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .swf-container ruffle-player,
+  .swf-container canvas,
+  .swf-container object,
+  .swf-container embed {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
+  .fortaring-section {
+    overflow: hidden;
+  }
+  .fortaring-section img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto;
+  }
 }
 
 .site-footer {
