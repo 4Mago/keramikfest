@@ -22,4 +22,4 @@ _tmp/
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.swo
